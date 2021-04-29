@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^index/?$ /index.php [NC,L]
+RewriteRule ^inicio/?$ /inicio.php [NC,L]

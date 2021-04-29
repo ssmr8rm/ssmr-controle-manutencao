@@ -12,5 +12,6 @@
 - Baixe e instale o Apache;
 - Baixe e instale o PhpMyAdmin Graphics;
 - Baixe e instale o MariaDB;
+- Crie um banco de dados com o nome: controle_manutencao;
 - Acesse a pasta /var/www/html e cole os arquivos do repositório nela;
 - Acesse o link 127.0.0.1 ou localhost;
