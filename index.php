@@ -22,7 +22,7 @@ include("config.php");
 
     <link rel="stylesheet" type="text/css" href="assets/css/global.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link href="http://10.89.8.9/templates/padraogoverno01/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <link href="http://10.89.8.29/templates/padraogoverno01/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="assets/js/global.js"></script>
   </head>
@@ -35,12 +35,8 @@ include("config.php");
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-left:15px;">
         <li><a href="#" class="nav-link px-2 text-secondary">Início</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">Verificar Status</a></li>
+        <li><a href="#" class="nav-link px-2 text-white">Consulta</a></li>
       </ul>
-
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="search" class="form-control form-control-dark" placeholder="Procurar...">
-      </form>
 
       <div class="text-end">
         <button type="button" class="btn btn-outline-light me-2" onClick="acessar()">Acesso Administrativo</button>
@@ -53,84 +49,64 @@ include("config.php");
 
 <div class="bg-dark text-secondary px-4 py-5 text-center">
   <div class="py-5">
-    <h1 class="display-5 fw-bold text-white">Seção de Serviço Militar/8ª</h1>
+    <h1 class="display-5 fw-bold text-white">Sistema de Controle de Manutenção</h1>
     <div class="col-lg-6 mx-auto">
       <p class="fs-5 mb-4">Acesso Rápido:</p>
       <div id="menu-principal-show" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" id="btn-doc" onClick="documentos()" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Documentos</button>
-        <button type="button" id="btn-sis" onClick="sistemas()" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Sistemas</button>
-        <button type="button" class="btn btn-outline-light btn-lg px-4">Status de Indenização</button>
-        <button type="button" class="btn btn-outline-light btn-lg px-4">Legislação</button>
-        <button type="button" class="btn btn-outline-light btn-lg px-4">Organograma</button>
-        <!-- MENU DOCUMENTOS -->
+        <button type="button" id="btn-sis" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Consulta</button>
       </div>
-
-      <div id="menu-2-none" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" class="btn btn-outline-light btn-lg px-4">Ordens de serviço</button>
-          <button type="button" class="btn btn-outline-light btn-lg px-4">Processo Seletivo</button>
-          <button type="button" class="btn btn-outline-light btn-lg px-4">Aditamentos</button>
-          <button type="button" class="btn btn-outline-light btn-lg px-4">Plano Regional</button>
-          <button type="button" onClick="voltar()" class="btn btn-outline-light btn-lg px-4">Voltar &larr;</button>
-        </div>
-
-        <div id="menu-3-none" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" class="btn btn-outline-light btn-lg px-4">SisConMilt</button>
-          <button type="button" class="btn btn-outline-light btn-lg px-4">SermilMOB</button>
-          <button type="button" onClick="voltar()" class="btn btn-outline-light btn-lg px-4">Voltar &larr;</button>
-        </div>
     </div>
   </div>
 </div>
 
 
 <div class="b-example-divider mb-2"></div>
-
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="position:absolute;left:50%;transform: translateX(-50%);">
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="position:absolute;left:50%;transform:translateX(-50%);">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Gráfico de Publicações</h1>
+        <h1 class="h2">Encontre seu Computador</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <button type="button" class="btn btn-sm btn-outline-secondary">
             <span data-feather="calendar"></span>
-            2021
+            Maio
           </button>
         </div>
       </div>
 
-      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Código</th>
+              <th>Especificações</th>
+              <th>Data de Entrada</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>KbE8bxPLzvm</td>
+              <td>Computador Samsung 8 GB RAM</td>
+              <td>27/03/2021</td>
+              <td>Conserto</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>kzd6Nk0Ll7L</td>
+              <td>Micro Computador LG 4 GB RAM</td>
+              <td>29/04/2021</td>
+              <td>Vistoria</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <br>
-      <div class="b-example-divider mb-4"></div>
-      <div class="container marketing" style="position:absolute;left:50%;transform:translateX(-50%);text-align:center;">
-
-<!-- Three columns of text below the carousel -->
-<div class="row">
-  <div class="col-lg-4">
-    <img src="assets/img/ott.jpg" class="bd-placeholder-img rounded-circle" style="box-shadow:0 0 4px 1px rgb(0, 0, 0, 0.4);" width="140" height="140">
-    <br><br>
-    <h2>OTT / MFDV</h2>
-    <p>Processo Seletivo para Oficiais Técnicos Temporários e Médicos, Farmacéuticos, Dentistas e Veterinários.</p>
-    <p><a class="btn btn-secondary" href="#">Aviso de Convocação &raquo;</a></p>
-  </div><!-- /.col-lg-4 -->
-  <div class="col-lg-4">
-    <img src="assets/img/stt.jpg" class="bd-placeholder-img rounded-circle" style="box-shadow:0 0 5px 1px rgb(0, 0, 0, 0.4);" width="140" height="140">
-    <br><br>
-    <h2>STT</h2>
-    <p>Processo Seletivo para Sargento Técnicos Temporários</p>
-    <p><a class="btn btn-secondary" href="#">Aviso de Convocação &raquo;</a></p>
-  </div><!-- /.col-lg-4 -->
-  <div class="col-lg-4">
-    <img src="assets/img/cet.jpg" class="bd-placeholder-img rounded-circle" style="box-shadow:0 0 4px 1px rgb(0, 0, 0, 0.4);" width="140" height="140">
-    <br><br>
-    <h2>CET</h2>
-    <p>Processo Seletivo para Cabo Especialista Temporário</p>
-    <p><a class="btn btn-secondary" href="#">Aviso de Convocação &raquo;</a></p>
-  </div><!-- /.col-lg-4 -->
-</div><!-- /.row -->
-
-<footer class="footer mt-auto py-3 bg-light">
-  <div class="container">
-    <span class="text-muted">&copy; 2021 &rarr; Desenvolvido pela Subseção de Sistemas SSMR/8ª</span>
-  </div>
-</footer>
+      <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted"><center>&copy; 2021 &rarr; Desenvolvido pela Subseção de Sistemas SSMR/8ª</center></span>
+      </div>
+      </footer>
 </main>
 
 <script type="text/javascript">
