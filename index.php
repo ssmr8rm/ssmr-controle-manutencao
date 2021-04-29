@@ -1,16 +1,3 @@
-<?php 
-session_start();
-// SESSÃO INICIA APENAS SE O EMAIL E SENHA FOREM IGUAIS AOS DADOS ENCONTRADOS NO BANCO DE DADOS
-if(!isset($_SESSION["email"]) || !isset($_SESSION["password"])) {
-    header("Location: index.php");
-    exit;
-} else {
-    echo "";
-}
-
-// CHAMA O ARQUIVO DE CONFIGURAÇÃO NO QUAL ESTÁ CONECTANDO AO BANCO DE DADOS
-include("config.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
