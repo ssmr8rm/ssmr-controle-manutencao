@@ -1,3 +1,16 @@
+<?php 
+session_start();
+// SESSÃO INICIA APENAS SE O EMAIL E SENHA FOREM IGUAIS AOS DADOS ENCONTRADOS NO BANCO DE DADOS
+if(!isset($_SESSION["email"]) || !isset($_SESSION["password"])) {
+    header("Location: index.php");
+    exit;
+} else {
+    echo "";
+}
+
+// CHAMA O ARQUIVO DE CONFIGURAÇÃO NO QUAL ESTÁ CONECTANDO AO BANCO DE DADOS
+include("config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +20,7 @@
 
     <title>Sistema de Controle de Manutenção - TI</title>
 
+    <link rel="stylesheet" type=text/css href="assets/fonts/fontello/css/fontello.css">
     <link rel="stylesheet" type="text/css" href="assets/css/global.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link href="http://10.89.8.29/templates/padraogoverno01/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
@@ -21,36 +35,22 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-left:15px;">
-        <li><a href="#" class="nav-link px-2 text-white">Início</a></li>
-        <li><a href="#" class="nav-link px-2 text-secondary">Consulta</a></li>
+        <li><a href="inicio.php" class="nav-link px-2 text-secondary">Início</a></li>
+        <li><a href="editar.php" class="nav-link px-2 text-white">Editar Cadastros</a></li>
       </ul>
 
       <div class="text-end">
-        <button type="button" class="btn btn-outline-light me-2" onClick="acessar()">Acesso Administrativo</button>
+        <button type="button" class="btn btn-outline-light me-2" onClick="sair()">Sair</button>
       </div>
     </div>
   </div>
 </header>
 
 <div class="b-example-divider"></div>
-
-<div class="bg-dark text-secondary px-4 py-5 text-center">
-  <div class="py-5">
-    <h1 class="display-5 fw-bold text-white">Sistema de Controle de Manutenção</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="fs-5 mb-4">Acesso Rápido:</p>
-      <div id="menu-principal-show" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" id="btn-sis" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Consulta</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="b-example-divider mb-2"></div>
+<br>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="position:absolute;left:50%;transform:translateX(-50%);">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Encontre seu Computador</h1>
+        <h1 class="h2">Editar Cadastos</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <button type="button" class="btn btn-sm btn-outline-secondary">
             <span data-feather="calendar"></span>
@@ -68,6 +68,8 @@
               <th>Especificações</th>
               <th>Data de Entrada</th>
               <th>Status</th>
+              <th>Editar</th>
+              <th>Deletar</th>
             </tr>
           </thead>
           <tbody>
@@ -85,8 +87,7 @@ while($lista = mysql_fetch_array($sql)) {
               <td><?php echo $lista['cod']; ?></td>
               <td><?php echo $lista['espec']; ?></td>
               <td><?php echo $lista['date']; ?></td>
-              <td>
-              <?php 
+              <td><?php 
               if ($lista['status'] == 1) {
                 echo "Entrou em carga";
               } else if ($lista['status'] == 2) {
@@ -97,6 +98,8 @@ while($lista = mysql_fetch_array($sql)) {
                 echo "Aguardando Entrega";
               }
               ?></td>
+              <td><a href="editando.php?id=<?php echo $lista['id']; ?>"><i class="icon icon-edit"></i></a></td>
+              <td><a href="remover.php?id=<?php echo $lista['id']; ?>"><i class="icon icon-trash-empty"></i></a></td>
             </tr>
             <?php
 }
@@ -143,6 +146,10 @@ while($lista = mysql_fetch_array($sql)) {
   function acessar() {
     window.location = "login.php";
   }
+
+    function sair() {
+        window.location = "logout.php";
+    }
 
 </script>
 

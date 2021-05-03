@@ -50,19 +50,23 @@ include("config.php");
 
 <div class="col-md-7 col-lg-8" style="position:absolute;left:50%;transform:translateX(-50%);">
         <h4 class="mb-3">Cadastro de Manutenção</h4>
-        <form class="needs-validation" novalidate action="cadastro.php" method="post">
+        <form class="needs-validation" novalidate action="edition.php" method="post">
           <div class="row g-3">
             <div class="col-sm-6">
-              <label for="firstName" class="form-label">Código (Automático)</label>
-              <input type="text" class="form-control" id="cod" name="cod" value="
-              <?php
-              
-              if (CRYPT_MD5 == 1) {
-                echo crypt(codigo);
-              }
+            <?php
+            include("config.php");
 
+            $sql = mysql_query("SELECT * FROM cadastros ORDER BY id DESC LIMIT 30");
+            
+            while($lista = mysql_fetch_array($sql)) {
+                ?>
+                <input type="text" name="id" value="<?php echo $lista['id']; ?>" style="display:none;">
+              <label for="firstName" class="form-label">Código (Automático)</label>
+              <input type="text" class="form-control" id="cod"  value="
+              <?php
+                echo $lista['cod'];
               ?>
-              ">
+              " disabled>
               <div class="invalid-feedback">
                 Requer um código
               </div>
@@ -70,7 +74,9 @@ include("config.php");
 
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Especificação</label>
-              <input type="text" class="form-control" id="espc" name="espec" placeholder="" value="" required>
+              <input disabled type="text" class="form-control" id="espc"  placeholder="" value="<?php
+                echo $lista['espec'];
+              ?>" required>
               <div class="invalid-feedback">
                 Requer uma especificação
               </div>
@@ -79,7 +85,9 @@ include("config.php");
             <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">Data de Entrada</label>
-              <input type="date" class="form-control" id="date" name="date" placeholder="" value="" required>
+              <input disabled type="date" class="form-control" id="date" placeholder="" value="<?php
+                echo $lista['date'];
+              ?>" required>
               <div class="invalid-feedback">
                 Requer uma data
               </div>
@@ -99,11 +107,15 @@ include("config.php");
                 Escolha um status
               </div>
             </div>
+            
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Cadastrar Manutenção</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Atualizar</button>
         </form>
+        <?php
+            }
+            ?>
       </div>
     </div>
   </main>
