@@ -49,11 +49,19 @@ include("config.php");
 
 <div class="col-md-7 col-lg-8" style="position:absolute;left:50%;transform:translateX(-50%);">
         <h4 class="mb-3">Cadastro de Manutenção</h4>
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" novalidate action="cadastro.php" method="post">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">Código (Automático)</label>
-              <input type="text" class="form-control" id="cod" name="cod" placeholder="" value="" required disabled>
+              <input type="text" class="form-control" id="cod" name="cod" value="
+              <?php
+              
+              if (CRYPT_MD5 == 1) {
+                echo crypt(codigo);
+              }
+
+              ?>
+              ">
               <div class="invalid-feedback">
                 Requer um código
               </div>
@@ -79,11 +87,11 @@ include("config.php");
 
             <div class="col-md-5">
               <label for="country" class="form-label">Status</label>
-              <select class="form-select" id="country" required>
-                <option value="">Escolha...</option>
-                <option>Entrou em carga</option>
-                <option>Em Vistoria</option>
-                <option>Em Conserto</option>
+              <select class="form-select" id="country" name="status" required>
+                <option value="0">Escolha...</option>
+                <option value="1">Entrou em carga</option>
+                <option value="2">Em Vistoria</option>
+                <option value="3">Em Conserto</option>
                 <option>Aguardando Entrega</option>
               </select>
               <div class="invalid-feedback">

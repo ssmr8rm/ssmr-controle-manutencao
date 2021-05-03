@@ -12,4 +12,6 @@ if(!$db) {
     die ("Erro ao conectar ao Banco de Dados!");
 }
 
+
+
 ?>

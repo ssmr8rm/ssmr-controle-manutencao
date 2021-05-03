@@ -58,10 +58,10 @@
           </button>
         </div>
       </div>
-
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
+          
             <tr>
               <th>#</th>
               <th>Código</th>
@@ -71,20 +71,25 @@
             </tr>
           </thead>
           <tbody>
+          <?php
+
+include("config.php");
+
+$sql = mysql_query("SELECT * FROM cadastros ORDER BY id DESC LIMIT 30");
+
+while($lista = mysql_fetch_array($sql)) {
+
+?>
             <tr>
-              <td>1</td>
-              <td>KbE8bxPLzvm</td>
-              <td>Computador Samsung 8 GB RAM</td>
-              <td>27/03/2021</td>
-              <td>Conserto</td>
+              <td><?php echo $lista['id']; ?></td>
+              <td><?php echo $lista['cod']; ?></td>
+              <td><?php echo $lista['espec']; ?></td>
+              <td><?php echo $lista['date']; ?></td>
+              <td><?php echo $lista['status']; ?></td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>kzd6Nk0Ll7L</td>
-              <td>Micro Computador LG 4 GB RAM</td>
-              <td>29/04/2021</td>
-              <td>Vistoria</td>
-            </tr>
+            <?php
+}
+        ?>
           </tbody>
         </table>
       </div>
