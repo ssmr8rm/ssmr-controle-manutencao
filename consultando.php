@@ -1,16 +1,8 @@
-<?php 
-session_start();
-// SESSÃO INICIA APENAS SE O EMAIL E SENHA FOREM IGUAIS AOS DADOS ENCONTRADOS NO BANCO DE DADOS
-if(!isset($_SESSION["email"]) || !isset($_SESSION["password"])) {
-    header("Location: index.php");
-    exit;
-} else {
-    echo "";
-}
+<?php
 
-// CHAMA O ARQUIVO DE CONFIGURAÇÃO NO QUAL ESTÁ CONECTANDO AO BANCO DE DADOS
-include("config.php");
+include("config.php"); 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,15 +41,14 @@ include("config.php");
 <br>
 
 <div class="col-md-7 col-lg-8" style="position:absolute;left:50%;transform:translateX(-50%);">
-        <h4 class="mb-3">Cadastro de Manutenção</h4>
-        <form class="needs-validation" novalidate action="edition.php" method="post">
+        <h4 class="mb-3">Consulta de Manutenção</h4>
+        <form class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="col-sm-6">
             <?php
             include("config.php");
-            $id = $_GET['id'];
-            $sql = mysql_query("SELECT * FROM cadastros WHERE id=$id");
-            
+            $cod = $_POST['cod'];
+            $sql = mysql_query("SELECT * FROM cadastros WHERE cod='$cod' ");
             while($lista = mysql_fetch_array($sql)) {
                 ?>
                 <input type="text" name="id" value="<?php echo $lista['id']; ?>" style="display:none;">

@@ -22,7 +22,7 @@
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-left:15px;">
         <li><a href="#" class="nav-link px-2 text-white">Início</a></li>
-        <li><a href="#" class="nav-link px-2 text-secondary">Consulta</a></li>
+        <li><a href="consulta.php" class="nav-link px-2 text-secondary">Consulta</a></li>
       </ul>
 
       <div class="text-end">
@@ -40,7 +40,7 @@
     <div class="col-lg-6 mx-auto">
       <p class="fs-5 mb-4">Acesso Rápido:</p>
       <div id="menu-principal-show" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" id="btn-sis" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Consulta</button>
+        <button type="button" id="btn-sis" onClick="consulta()" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Consulta</button>
       </div>
     </div>
   </div>
@@ -142,6 +142,10 @@ while($lista = mysql_fetch_array($sql)) {
   
   function acessar() {
     window.location = "login.php";
+  }
+
+  function consulta() {
+    window.location = "consulta.php";
   }
 
 </script>
